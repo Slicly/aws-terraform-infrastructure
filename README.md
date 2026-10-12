@@ -30,7 +30,30 @@ Public subnets host an internet-facing Application Load Balancer. Private subnet
 The load balancer forwards incoming HTTP requests to the application servers. Security group rules restrict direct inbound access to the application servers.
 
 An Auto Scaling target tracking policy is configured to maintain approximately 50% average CPU utilization within the defined capacity limits.
+```mermaid
+flowchart TD
+    Internet["Internet"]
+    IGW["Internet Gateway"]
+    ALB["Application Load Balancer"]
 
+    subgraph VPC["AWS VPC - 10.0.0.0/16"]
+        subgraph AZ1["Availability Zone A"]
+            PublicA["Public Subnet A"]
+            EC2A["Private EC2 Server A"]
+        end
+
+        subgraph AZ2["Availability Zone B"]
+            PublicB["Public Subnet B"]
+            EC2B["Private EC2 Server B"]
+        end
+
+        IGW --> ALB
+        ALB --> EC2A
+        ALB --> EC2B
+    end
+
+    Internet --> IGW
+```
 ## Security Design
 
 - Application servers are placed in private subnets.
