@@ -108,3 +108,30 @@ AWS Networking • Infrastructure as Code • Terraform • EC2 • Load Balanci
 - Add additional CloudWatch monitoring and notifications.
 - Implement automated Terraform validation using GitHub Actions.
 - Add architecture diagrams and deployment testing documentation.
+
+## Project Validation and CI/CD
+
+This project uses GitHub Actions to automatically validate
+Terraform infrastructure configurations.
+
+The CI/CD workflow runs when changes are pushed to the
+main branch or when pull requests target main.
+
+Automated checks include:
+- Terraform initialization without a remote backend
+- Terraform formatting verification
+- Terraform configuration validation
+
+The workflow successfully passed GitHub Actions validation.
+
+### Deployment Status
+
+This project is an Infrastructure as Code (IaC) portfolio
+demonstration. The AWS infrastructure has not been deployed.
+
+All configurations were developed and validated without
+creating AWS resources or incurring AWS infrastructure costs.
+
+Future improvements could include deploying the architecture
+in an AWS sandbox environment, performing integration tests,
+and adding security scanning.
